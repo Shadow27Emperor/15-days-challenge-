@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Days Challenge</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --bg-color: #f4f7f6;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+        .qr-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        #qrcode {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        p.insta-text {
+            margin-bottom: 15px;
+            color: #666;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>15 Days Challenge</h1>
+
+    <div class="container">
+        <input type="text" id="ytHandle" placeholder="YouTube @Name" required>
+        <input type="password" id="secretCode" placeholder="Enter 8-Digit Code" maxlength="8" required>
+        <button onclick="checkCode()">Submit</button>
+        <div id="message"></div>
+    </div>
+
+    <div class="qr-section">
+        <p class="insta-text">Follow the Emperor</p>
+        <div id="qrcode"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // Generate Instagram QR
+        new QRCode(document.getElementById("qrcode"), "https://www.instagram.com/shadow27emperor?igsh=MnZldzRrNzJzeG5j");
+
+        function checkCode() {
+            const codeInput = document.getElementById('secretCode').value;
+            const ytInput = document.getElementById('ytHandle').value;
+            const messageDiv = document.getElementById('message');
+
+            if (ytInput === "") {
+                messageDiv.style.color = "var(--error-color)";
+                messageDiv.innerHTML = "Please enter your YouTube name!";
+                return;
+            }
+
+            // This is where we verify the code without showing it in the box
+            if (codeInput === "Elvare50") {
+                messageDiv.style.color = "var(--success-color)";
+                messageDiv.innerHTML = "Success! You are in the challenge.";
+            } else {
+                messageDiv.style.color = "var(--error-color)";
+                messageDiv.innerHTML = "Invalid Code. Try again!";
+            }
+        }
+    </script>
+
+</body>
+</html>
