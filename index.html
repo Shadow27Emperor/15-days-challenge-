@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Days Challenge - Elvare50</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f0f0f;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        h2 { color: #f1c40f; margin-bottom: 10px; }
+        p { color: #bbb; font-size: 0.9em; }
+
+        /* Scrollable Area */
+        .scroll-box {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 15px 0;
+            height: 100px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .scroll-box span {
+            display: block;
+            font-size: 0.85em;
+            color: #00ff41; /* Matrix Green */
+            border-bottom: 1px solid #222;
+            padding: 3px 0;
+        }
+
+        /* Form Styling */
+        .form-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #282828;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            width: 85%;
+            padding: 12px;
+            background: #f1c40f;
+            color: black;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #d4ac0d; }
+
+        #status-message {
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Challenge: Elvare50</h2>
+        <p>Complete 8 videos to win 500 Rupees</p>
+
+        <div class="scroll-box" id="name-list">
+            <span>> System Ready...</span>
+            <span>> Waiting for participants...</span>
+        </div>
+
+        <div id="name-input-group" class="form-section">
+            <input type="text" id="user-name" placeholder="Enter Your Name">
+            <button onclick="saveName()">START CHALLENGE</button>
+        </div>
+
+        <div id="digit-input-group" class="form-section" style="display:none;">
+            <p>Welcome, <strong id="display-name" style="color:#f1c40f;"></strong></p>
+            <div id="status-message">Checking timing...</div>
+            
+            <div id="input-controls" style="display:none;">
+                <input type="number" id="digit-entry" placeholder="Enter Digit" oninput="if(this.value.length > 1) this.value = this.value.slice(0, 1);">
+                <button onclick="submitDigit()">SUBMIT TODAY'S DIGIT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="challenge.js"></script>
+
+</body>
+</html>
